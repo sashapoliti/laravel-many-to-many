@@ -1,9 +1,9 @@
 @extends('layouts.admin')
-@section('title', $type->name)
+@section('title', $technology->name)
 
 @section('content')
     <section>
-        <h1>{{ $type->name }}</h1>
+        <h1>{{ $technology->name }}</h1>
         <table class="table table-striped">
             <thead>
                 <tr>
@@ -16,7 +16,7 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach ($type->projects as $project)
+                @foreach ($technology->projects as $project)
                     <tr>
                         <th scope="row">{{ $project->id }}</th>
                         <td>{{ $project->title }}</td>

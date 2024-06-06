@@ -46,6 +46,9 @@ class ProjectController extends Controller
             $form_data['image'] = Storage::putFileAs('project_images', $request->image, $request->image->getClientOriginalName());
         }
         $newProject = Project::create($form_data);
+        if ($request->has('technologies')) {
+            $newProject->technologies()->attach($request->technologies);
+        }
         return redirect()->route('admin.projects.index')->with('success', 'Project created successfully');
     }
 
@@ -54,8 +57,7 @@ class ProjectController extends Controller
      */
     public function show(Project $project)
     {
-        $types = Type::all();
-        return view('admin.projects.show', compact('project', 'types'));
+        return view('admin.projects.show', compact('project'));
     }
 
     /**

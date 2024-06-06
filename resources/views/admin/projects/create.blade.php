@@ -16,7 +16,8 @@
             </div>
             <div class="mb-3 d-flex">
                 <div class="media me-4">
-                    <img id="uploadPreview" class="shadow" width="150" src="https://via.placeholder.com/300x200" alt="Preview image">
+                    <img id="uploadPreview" class="shadow" width="150" src="https://via.placeholder.com/300x200"
+                        alt="Preview image">
                 </div>
                 <div>
                     <label for="image" class="form-label">Image</label>
@@ -48,6 +49,19 @@
                 @error('type_id')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror
+            </div>
+            <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                @foreach ($technologies as $technology)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $technology->id }}"
+                            id="technology-{{ $technology->id }}" name="technologies[]"
+                            {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="technology-{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </label>
+                    </div>
+                @endforeach
             </div>
             <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Add</button>

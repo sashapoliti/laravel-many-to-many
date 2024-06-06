@@ -1,19 +1,19 @@
 @extends('layouts.admin')
-@section('title', 'Edit Type')
+@section('title', 'Edit Technology')
 
 @section('content')
     <section>
         <div class="d-flex justify-content-between align-items-center py-4">
-            <h2>Edit type: {{ $type->name }}</h2>
-            <a href="{{ route('admin.types.show', $type->slug) }}" class="btn btn-primary">Show type</a>
+            <h2>Edit Technology: {{ $technology->name }}</h2>
+            <a href="{{ route('admin.technologies.show', $technology->slug) }}" class="btn btn-primary">Show technology</a>
         </div>
-        <form action="{{ route('admin.types.update', $type->slug) }}" method="POST" enctype="multipart/form-data">
+        <form action="{{ route('admin.technologies.update', $technology->slug) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
             <div class="mb-3">
                 <label for="name" class="form-label">Name</label>
                 <input type="text" class="form-control @error('name') is-invalid @enderror" id="name" name="name"
-                    value="{{ old('name', $type->name) }}">
+                    value="{{ old('name', $technology->name) }}">
                 @error('name')
                     <div class="alert alert-danger">{{ $message }}</div>
                 @enderror

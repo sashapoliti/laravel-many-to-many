@@ -1,10 +1,10 @@
 @extends('layouts.admin')
-@section('title', 'Add Type')
+@section('title', 'Add Technology')
 
 @section('content')
 <section>
-    <h2>Create a new type</h2>
-    <form action="{{ route('admin.types.store') }}" method="POST" enctype="multipart/form-data">
+    <h2>Create a new technology</h2>
+    <form action="{{ route('admin.technologies.store') }}" method="POST" enctype="multipart/form-data">
         @csrf
         <div class="mb-3">
             <label for="name" class="form-label">Title</label>

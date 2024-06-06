@@ -29,9 +29,10 @@ class UpdateProjectRequest extends FormRequest
                 'min:3',
                 Rule::unique('projects')->ignore($this->project->id)
             ],
-            'image' => 'nullable|max:255',
+            'image' => 'nullable|image|max:1024',
             'description' => 'nullable',
-            'type_id' => 'nullable|exists:types,id'
+            'type_id' => 'nullable|exists:types,id',
+            'technologies' => 'nullable|exists:technologies,id',
         ];
     }
 
@@ -43,6 +44,9 @@ class UpdateProjectRequest extends FormRequest
             'title.max' => 'Title must be at most :max characters',
             'title.required' => 'Title is required',
             'image.max' => 'Image must be at most :max characters',
+            'image.image' => 'Image must be an image',
+            'type_id.exists' => 'Type not found',
+            'technologies.exists' => 'Technology not found'
         ];
     }
 }

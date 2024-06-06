@@ -50,6 +50,19 @@
                 @enderror
             </div>
             <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                @foreach ($technologies as $technology)
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="{{ $technology->id }}"
+                            id="technology-{{ $technology->id }}" name="technologies[]"
+                            {{ $project->technologies->contains($technology->id) ? 'checked' : '' }}>
+                        <label class="form-check-label" for="technology-{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </label>
+                    </div>
+                @endforeach
+            </div>
+            <div class="mb-3">
                 <button type="submit" class="btn btn-primary">Add</button>
                 <button type="reset" class="btn btn-secondary">Reset</button>
             </div>
